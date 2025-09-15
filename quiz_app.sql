@@ -13,8 +13,6 @@ CREATE TABLE Quizzes (
     title VARCHAR(100) NOT NULL,
     description TEXT,
     created_by INT NOT NULL, 
-    created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    duration INT, -- in minutes
     status ENUM('active','closed') DEFAULT 'active',
     FOREIGN KEY (created_by) REFERENCES Users(user_id)
 );
@@ -44,7 +42,6 @@ CREATE TABLE Responses (
     user_id INT NOT NULL,
     question_id INT NOT NULL,
     selected_option VARCHAR(10),
-    submitted_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (quiz_id) REFERENCES Quizzes(quiz_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (question_id) REFERENCES Questions(question_id)
@@ -56,8 +53,8 @@ Select * FROM Quizzes;
 Select * FROM Questions;
 Select * FROM Results;
 SELECT * FROM Responses;
-
-DROP Database QUIZ;
+ 
+ Drop Database QUIZ;
 
 -- user
 -- Add a Faculty
@@ -68,8 +65,8 @@ INSERT INTO Users (name, email, password, role)
 VALUES ('Shivani', 'shivani@college.com', 'hashed_pass2', 'student');
 
 -- INSERT QUIZ
-INSERT INTO Quizzes (title, description, created_by, duration, status)
-VALUES ('Java Basics Quiz', 'Covers OOP and variables', 1, 30, 'active');
+INSERT INTO Quizzes (title, description, created_by, status)
+VALUES ('Java Basics Quiz', 'Covers OOP and variables', 1, 'active');
 
 
 -- INSERT Q
@@ -91,3 +88,10 @@ VALUES (1, 2, 2, 'A');
 -- RESULT
 INSERT INTO Results (quiz_id, user_id, score)
 VALUES (1, 2, 1);
+
+
+
+
+
+
+
