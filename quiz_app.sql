@@ -59,35 +59,40 @@ SELECT * FROM Responses;
 -- user
 -- Add a Faculty
 INSERT INTO Users (name, email, password, role)
-VALUES ('Prof. Sharma', 'sharma@college.com', 'hashed_pass1', 'faculty');
+VALUES ('Prof. Shiv', 'shiv@college.com', 'hashed_pass1', 'faculty');
 -- Add a Student
 INSERT INTO Users (name, email, password, role)
 VALUES ('Shivani', 'shivani@college.com', 'hashed_pass2', 'student');
 
 -- INSERT QUIZ
 INSERT INTO Quizzes (title, description, created_by, status)
-VALUES ('Java Basics Quiz', 'Covers OOP and variables', 1, 'active');
+VALUES('C Programming Basics', 'Covers loops and arrays', 1, 20, 'active');
+
 
 
 -- INSERT Q
 INSERT INTO Questions (quiz_id, question_text, option_a, option_b, option_c, option_d, correct_answer)
 VALUES 
-(1, 'Which keyword is used to inherit a class in Java?', 'super', 'this', 'extends', 'implements', 'C'),
+(1, 'Which symbol is used to end a statement in C?', ';', '.', ':', ',', 'A'),
 
-(1, 'Which of these is not a primitive data type in Java?', 'int', 'float', 'boolean', 'String', 'D');
+(1, 'Which data type is used to store decimal values?', 'int', 'char', 'float', 'string', 'C');
+
 
 -- Response
 -- Student (user_id = 2) answers Question 1 with option C
 INSERT INTO Responses (quiz_id, user_id, question_id, selected_option)
-VALUES (1, 2, 1, 'C');
+VALUES (1, 2, 1, 'A');
+
 
 -- Student (user_id = 2) answers Question 2 with option A
 INSERT INTO Responses (quiz_id, user_id, question_id, selected_option)
-VALUES (1, 2, 2, 'A');
+VALUES(1, 2, 2, 'B');
+
 
 -- RESULT
 INSERT INTO Results (quiz_id, user_id, score)
 VALUES (1, 2, 1);
+
 
 
 
